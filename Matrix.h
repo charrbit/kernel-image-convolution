@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-
 class Matrix
 {
     int n_rows;
@@ -44,4 +43,5 @@ public:
     /* Overloaded Output Operator */
     friend std::ostream& operator<<(std::ostream& outputStream, const Matrix& Matrix);
 };
+
 #endif
