@@ -6,30 +6,30 @@
 
 class Matrix
 {
-    int row;
-    int col;
+    int n_rows;
+    int n_cols;
 
-    double** matrix;
+    double** matrix_data;
 
 public:
-    Matrix() : row(0), col(0), matrix(nullptr) {}
+    Matrix() : n_rows(0), n_cols(0), matrix_data(nullptr) {}
 
-    Matrix(int r, int c);
+    Matrix(int numRows, int numCols);
 
-    Matrix(int n) : Matrix(n, n) {};
+    Matrix(int numRowsCols) : Matrix(numRowsCols, numRowsCols) {};
 
-    Matrix(std::istream& inp, int r, int c);
+    Matrix(std::istream& inputMatrix, int numRows, int numCols);
 
-    Matrix(std::istream& inp, int n) : Matrix(inp, n, n) {};
+    Matrix(std::istream& inputMatrix, int numRowsCols) : Matrix(inputMatrix, numRowsCols, numRowsCols) {};
 
     ~Matrix();
 
-    int getRow() { return row; }
-    int getCol() { return col; }
-    
-    int get(int r, int c) { return matrix[r][c]; }
-    void set(int r, int c, int val) { matrix[r][c] = val; }
+    int getRowCount() { return n_rows; }
+    int getColCount() { return n_cols; }
+    double** getMatrix() { return matrix_data; }
+    int get(int row, int col) { return matrix_data[row][col]; }
+    void set(int row, int col, int val) { matrix_data[row][col] = val; }
 
-    friend std::ostream& operator<<(std::ostream& stream, const Matrix& aMatrix);
+    friend std::ostream& operator<<(std::ostream& outputStream, const Matrix& Matrix);
 };
 #endif
