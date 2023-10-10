@@ -1,15 +1,4 @@
-
 #include "Matrix.h"
-
-Matrix::Matrix(int n) : row(n), col(n) {
-    matrix = new double*[n];
-    for (int r = 0; r < n; r++) {
-        matrix[r] = new double[n];
-        for (int c = 0; c < n; c++) {
-            matrix[r][c] = 0;
-        }
-    }
-}
 
 Matrix::Matrix(int r, int c) : row(r), col(c) {
     matrix = new double*[r];
@@ -19,16 +8,6 @@ Matrix::Matrix(int r, int c) : row(r), col(c) {
             matrix[row][col] = 0;
         }
     }    
-}
-
-Matrix::Matrix(std::istream& inp, int n) : row(n), col(n) {
-    matrix = new double*[n];
-    for (int row = 0; row < n; row++) {
-        matrix[row] = new double[n];
-        for (int col = 0; col < n; col++) {
-            inp >> matrix[row][col];
-        }
-    }
 }
 
 Matrix::Matrix(std::istream& inp, int r, int c) : row(r), col(c) {
