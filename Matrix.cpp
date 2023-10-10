@@ -10,7 +10,7 @@ Matrix::Matrix(int numRows, int numCols) : n_rows(numRows), n_cols(numCols) {
     }    
 }
 
-Matrix::Matrix(std::istream& inputMatrix, int numRows, int numCols) : n_rows(numRows), n_cols(numCols) {
+Matrix::Matrix(int numRows, int numCols, std::istream& inputMatrix) : n_rows(numRows), n_cols(numCols) {
     matrix_data = new double*[numRows];
     for (int row = 0; row < numRows; row++) {
         matrix_data[row] = new double[numCols];
