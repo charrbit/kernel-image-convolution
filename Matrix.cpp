@@ -34,13 +34,8 @@ Matrix::~Matrix() {
 std::ostream& operator<<(std::ostream& outputStream, const Matrix& Matrix) {
     for (int row = 0; row < Matrix.n_rows; row++) {
         for (int col = 0; col < Matrix.n_cols; col++) {
-            outputStream << Matrix.matrix_data[row][col];
-            // Only print spaces after elements that are not at the end of a row
-            if (col <= Matrix.n_cols - 1) {
-                outputStream << ' ';
-            }
+            outputStream << Matrix.matrix_data[row][col] << " ";
         }
-        outputStream << std::endl;
     }
 
     return outputStream;
