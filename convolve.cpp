@@ -1,5 +1,4 @@
 #include "Matrix.h"
-#include </home/astrobits/opencilk/cheetah/include/cilk/cilk.h>
 
 int convolvePixel(int x,int y, Matrix& image, Matrix& kernel) {
     int kernelLength = kernel.getRow();
@@ -25,29 +24,4 @@ int convolvePixel(int x,int y, Matrix& image, Matrix& kernel) {
         }
     }
     return convolutionVal / counter;
-}
-
-void sequentialConvolve(int startX, int endX, int startY, int endY, Matrix& convolvedImage, Matrix& originalImage, Matrix& kernel) {
-    for (int i = startX; i < endX; i++) {
-        for (int j = startY; j < endY; j++) {
-            convolvedImage.set(i,j, convolvePixel(i,j,originalImage,kernel));
-        }
-    }
-}
-
-void parallelConvolve(int startX, int startY, int xSize, int ySize, Matrix& convolvedImage, Matrix& originalImage, Matrix& kernel, int stopX, int stopY) {
-    if ((xSize <= stopX) && (ySize <= stopY)) {
-        sequentialConvolve(startX, startX+xSize, startY, startY+ySize, convolvedImage, originalImage, kernel);
-    }
-    else {
-        cilk_spawn 
-            parallelConvolve(startX, startY, xSize/2, ySize/2, convolvedImage, originalImage, kernel, stopX, stopY);
-        cilk_spawn
-            parallelConvolve(startX, startY+ySize/2, xSize/2, ySize/2, convolvedImage, originalImage, kernel, stopX, stopY); 
-        cilk_spawn
-            parallelConvolve(startX+xSize/2, startY, xSize/2, ySize/2, convolvedImage, originalImage, kernel, stopX, stopY); 
-        cilk_spawn
-            parallelConvolve(startX+xSize/2, startY+ySize/2, xSize/2, ySize/2, convolvedImage, originalImage, kernel, stopX, stopY);
-        cilk_sync;
-    }
 }
