@@ -2,10 +2,10 @@
 
 #include "convolveSequential.cpp"
 
-int main() {
+int main(int argc, char* argv[]) {
 
-    int imageWidth = 1024;
-    int imageHeight = 1024;
+    int imageWidth = std::stoi(argv[1]);
+    int imageHeight = std::stoi(argv[2]);
 
     // Generate the new matrices to store the convolved pixel values
     Matrix convolvedRed = Matrix(imageHeight, imageWidth);
@@ -14,23 +14,23 @@ int main() {
 
     // Generate the kernel Matrix
     std::ifstream kernelStream;
-    kernelStream.open("kernels/boxcar3.txt");
-    Matrix kernel = Matrix(3, kernelStream);
+    kernelStream.open(argv[3]);
+    Matrix kernel = Matrix(std::stoi(argv[4]), kernelStream);
     kernelStream.close();
 
     // Read the RGB pixel values of the original image into a Matrix
     std::ifstream redPixelInStream;
-    redPixelInStream.open("imageRed.txt");
+    redPixelInStream.open(argv[5]);
     Matrix imageRed = Matrix(imageHeight, imageWidth, redPixelInStream);
     redPixelInStream.close();
 
     std::ifstream greenPixelInStream;
-    greenPixelInStream.open("imageGreen.txt");
+    greenPixelInStream.open(argv[6]);
     Matrix imageGreen = Matrix(imageHeight, imageWidth, greenPixelInStream);
     greenPixelInStream.close();
 
     std::ifstream bluePixelInStream;
-    bluePixelInStream.open("imageBlue.txt");
+    bluePixelInStream.open(argv[7]);
     Matrix imageBlue = Matrix(imageHeight, imageWidth, bluePixelInStream);
     bluePixelInStream.close();
 
