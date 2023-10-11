@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     // Parse passed arguments
     int imageWidth = std::stoi(argv[1]);
     int imageHeight = std::stoi(argv[2]);
-    string kernelPath = argv[3];
+    std::string kernelPath = argv[3];
     int kernelSize = std::stoi(argv[4]);
 
     // Generate the new matrices to store the convolved pixel values
