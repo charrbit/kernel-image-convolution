@@ -2,8 +2,11 @@ import sys
 import numpy as np
 from PIL import Image
 
+# Parse passed arguments
 imageMode = sys.argv[1]
-imageSize = (int(sys.argv[2]), int(sys.argv[3]))
+imageWidth = int(sys.argv[2])
+imageHeight = int(sys.argv[3])
+imageSize = (imageWidth, imageHeight)
 
 # Read the band pixel values from their respective files
 convolvedRed = np.loadtxt("imageRedConvolved.txt", dtype=int)
