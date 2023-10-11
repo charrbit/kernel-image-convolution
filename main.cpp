@@ -1,6 +1,5 @@
 #include <fstream>
 #include <random>
-#include <chrono>
 #include "Matrix.h"
 #include "convolve.cpp"
 
@@ -44,13 +43,8 @@ int main() {
 
     Matrix newPimage = Matrix(n);
     int stopSize = 1;
-    auto start = std::chrono::high_resolution_clock::now();
     parallelConvolve(0, 0, newPimage.getRow(), newPimage.getCol(), newPimage, image, kernel, stopSize, stopSize);
-    auto stop = std::chrono::high_resolution_clock::now();
 
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Parallel:   " << duration.count() << " microseconds\n";
-  
     // -----------------------------------------------------
 
 
@@ -58,12 +52,8 @@ int main() {
 
     /* Matrix newImage = Matrix(n);
     
-    auto start = std::chrono::high_resolution_clock::now();
     sequentialConvolve(0, newImage.getRow(), 0 , newImage.getCol(), newImage, image, kernel);
-    auto stop = std::chrono::high_resolution_clock::now();
 
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Sequential:   " << duration.count() << " microseconds\n"; */
 
     // -----------------------------------------------------
 
