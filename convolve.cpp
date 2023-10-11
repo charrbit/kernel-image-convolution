@@ -1,4 +1,4 @@
-#include "Matrix.h"
+#include "Matrix.cpp"
 
 int convolvePixel(int x,int y, Matrix& image, Matrix& kernel) {
     int kernelLength = kernel.getRowCount();
