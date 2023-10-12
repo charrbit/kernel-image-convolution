@@ -1,1 +1,1 @@
-# parallel-image-convolution
+kernel-image-convolution
