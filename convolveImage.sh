@@ -5,8 +5,6 @@ imagePath=$1
 kernelPath=$2
 kernelSize=$3
 
-echo $imagePath $kernelPath $kernelSize
-
 # Seperate the image into its constituent red, green, and blue pixel values (bands)
 python3 imageToPixelRGB.py $imagePath
 
@@ -14,8 +12,6 @@ python3 imageToPixelRGB.py $imagePath
 imageMode=$(head -1 imageConfig.txt)
 imageWidth=$(head -2 imageConfig.txt | tail -1)
 imageHeight=$(head imageConfig.txt | tail -1)
-
-echo $imageMode $imageWidth $imageHeight
 
 # Use the kernel to convolve each image band
 g++ main.cpp
