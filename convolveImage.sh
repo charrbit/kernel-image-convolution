@@ -19,3 +19,6 @@ g++ main.cpp
 
 # Combine the transformed RGB pixels back together and generate the final image
 python3 pixelRGBToImage.py $imageMode $imageWidth $imageHeight
+
+# Cleanup pixel values and configuration info that is no longer needed
+rm a.out imageConfig.txt imageBlue* imageRed* imageGreen*
