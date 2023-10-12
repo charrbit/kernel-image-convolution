@@ -12,9 +12,9 @@ int main(int argc, char* argv[]) {
     int kernelSize = std::stoi(argv[4]);
 
     // Generate the new matrices to store the convolved pixel values
-    Matrix convolvedRed = Matrix(imageHeight, imageWidth);
-    Matrix convolvedGreen = Matrix(imageHeight, imageWidth);
-    Matrix convolvedBlue = Matrix(imageHeight, imageWidth);
+    Matrix convolvedRed = Matrix(imageWidth, imageHeight);
+    Matrix convolvedGreen = Matrix(imageWidth, imageHeight);
+    Matrix convolvedBlue = Matrix(imageWidth, imageHeight);
 
     // Generate the kernel Matrix
     std::ifstream kernelStream;
@@ -25,17 +25,17 @@ int main(int argc, char* argv[]) {
     // Read the RGB pixel values of the original image into a Matrix
     std::ifstream redPixelInStream;
     redPixelInStream.open("imageRed.txt");
-    Matrix imageRed = Matrix(imageHeight, imageWidth, redPixelInStream);
+    Matrix imageRed = Matrix(imageWidth, imageHeight, redPixelInStream);
     redPixelInStream.close();
 
     std::ifstream greenPixelInStream;
     greenPixelInStream.open("imageGreen.txt");
-    Matrix imageGreen = Matrix(imageHeight, imageWidth, greenPixelInStream);
+    Matrix imageGreen = Matrix(imageWidth, imageHeight, greenPixelInStream);
     greenPixelInStream.close();
 
     std::ifstream bluePixelInStream;
     bluePixelInStream.open("imageBlue.txt");
-    Matrix imageBlue = Matrix(imageHeight, imageWidth, bluePixelInStream);
+    Matrix imageBlue = Matrix(imageWidth, imageHeight, bluePixelInStream);
     bluePixelInStream.close();
 
     // Sequentially convolve each RGB Matrix seperately
