@@ -64,17 +64,6 @@ int main(int argc, char* argv[]) {
         bluePixelOutStream << convolvedBlue;
     }
     bluePixelOutStream.close();
-
-
-    /* Generate Parallel Convolved Image */
-    // int n = 8192;
-    // dataSource.open("images/Image_8192.txt");
-    // Matrix image = Matrix(dataSource, n);
-    // dataSource.close();
-
-    // Matrix newPimage = Matrix(n);
-    // int stopSize = 1;
-    // parallelConvolve(0, 0, newPimage.getRow(), newPimage.getCol(), newPimage, image, kernel, stopSize, stopSize);
-
+    
     return 0;
 }

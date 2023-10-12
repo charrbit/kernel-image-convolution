@@ -1,4 +1,4 @@
-#include "convolve.cpp"
+#include "convolvePixel.cpp"
 
 void sequentialConvolve(int startX, int endX, int startY, int endY, Matrix& convolvedImage, Matrix& originalImage, Matrix& kernel) {
     for (int i = startX; i < endX; i++) {
